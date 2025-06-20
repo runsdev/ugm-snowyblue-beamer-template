@@ -1,0 +1,193 @@
+% beamerthemeUGM.sty
+% A Beamer theme inspired by a Universitas Gadjah Mada presentation slide.
+% Date: June 21, 2025
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeUGM}[2025/06/21 v1.0 UGM Inspired Theme]
+
+% ----- OPTIONS -----
+\newif\ifbeamer@ugm@nofooterlogo
+\DeclareOption{nofooterlogo}{\beamer@ugm@nofooterlogotrue}
+\ProcessOptions\relax
+
+% ----- DEPENDENCIES -----
+\usecolortheme{default}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{xcolor}
+
+% ----- COLORS -----
+\definecolor{ugmBlue}{HTML}{074363}
+\definecolor{ugmText}{HTML}{333333}
+\definecolor{ugmLightGrey}{HTML}{F2F4FA}
+\definecolor{ugmSlogan}{HTML}{666666}
+\definecolor{titleBg}{HTML}{e8eced} % Color for the frametitle background from image
+
+% Set Beamer colors
+\setbeamercolor{palette primary}{bg=ugmBlue, fg=white}
+\setbeamercolor{palette secondary}{bg=ugmBlue!75!white, fg=white}
+\setbeamercolor{palette tertiary}{bg=ugmBlue!50!white, fg=white}
+\setbeamercolor{palette quaternary}{bg=ugmBlue!25!white, fg=white}
+
+\setbeamercolor{structure}{fg=ugmBlue}
+\setbeamercolor{title}{fg=ugmBlue, bg=white}
+\setbeamercolor{frametitle}{fg=ugmText} % Set default fg color for frametitle text
+\setbeamercolor{normal text}{fg=ugmText, bg=white}
+\setbeamercolor{author}{fg=ugmBlue}
+\setbeamercolor{institute}{fg=ugmText}
+\setbeamercolor{date}{fg=ugmText}
+
+% <<< ADDED SECTION FOR NEW FRAMETITLE STYLE >>>
+% Define a new color environment for the frametitle background
+\setbeamercolor{frametitlebg}{bg=titleBg}
+% <<< END ADDED SECTION >>>
+
+% ----- FONTS -----
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{author}{size=\large}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries} % Made frametitle bold
+\setbeamerfont{institute}{size=\normalsize}
+
+% ----- OUTER THEME (HEADER/FOOTER/SIDEBAR) -----
+
+% --- FOOTER ---
+\defbeamertemplate*{footline}{UGM theme}
+{
+\begin{tikzpicture}[remember picture, overlay]
+      % Left box with website
+      \node[fill=ugmBlue, anchor=south west, minimum height=6ex, minimum width=0.23\paperwidth, text=white, font=\footnotesize, align=center, text width=0.23\paperwidth] 
+      at (current page.south west) {\href{https://www.ugm.ac.id}{\color{white}www.ugm.ac.id}};
+      
+      % Center box with slogan
+      \node[fill=white, anchor=south, minimum height=6ex, minimum width=0.5\paperwidth, text=ugmBlue, font=\footnotesize, align=center] 
+      at (current page.south) {Locally Rooted, Globally Respected};
+      
+      % Right box with logo and text
+      \node[fill=white, anchor=south east, minimum height=6ex, minimum width=0.25\paperwidth, inner sep=-0.6cm] at (current page.south east) {
+          \includegraphics[height=6ex]{ugm_logo_plain.png}%
+      };
+    \end{tikzpicture}
+} % Footline is empty by default, frames will handle it
+
+% --- HEADER (COURSE TITLE) ---
+% Headline is no longer needed as frametitle replaces it
+\defbeamertemplate*{headline}{UGM theme}
+{}
+
+% ----- INNER THEME (TITLE PAGE, ITEMS, BLOCKS) -----
+
+% <<< MODIFIED SECTION FOR NEW FRAMETITLE STYLE >>>
+% This template creates the new look for all regular (non-titlepage) slides
+\defbeamertemplate*{frametitle}{UGM theme}
+{
+  \nointerlineskip
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[
+      fill=ugmLightGrey,
+      anchor=north west,
+      minimum width=0.08\paperwidth,
+      minimum height=2.5ex,
+      inner sep=0pt,
+      yshift=-0.07\paperheight
+    ] (framebg) at (current page.north west) {};
+    
+    % Dark blue vertical bar on the left
+    \node[
+      fill=ugmBlue,
+      anchor=north west,
+      minimum width=0.6em,
+      minimum height=2.5ex,
+      inner sep=0pt,
+      xshift=0.08\paperheight,
+      yshift=-0.07\paperheight
+    ] at (current page.north west) {};
+    
+    % Frame title text
+    \node[
+      anchor=north west,
+      text width=0.95\paperwidth,
+      align=left,
+      font=\usebeamerfont{frametitle},
+      text=ugmText
+    ] at ($(current page.north west) + (2.3em, -2.7ex)$) {
+      \insertframetitle
+    };
+  \end{tikzpicture}
+  \vskip2.5ex % Space for the content to start below the frame title
+}
+
+% <<< END MODIFIED SECTION >>>
+
+% --- TITLE PAGE ---
+\defbeamertemplate*{title page}{UGM theme}
+{
+  % Background for title page
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[color=titleBg] (current page.north west) rectangle (current page.south east);
+  \end{tikzpicture}
+
+  \vbox to \textheight{
+    \vskip 4em
+
+    % Main content area to the right
+    \begin{tikzpicture}[remember picture, overlay]
+        % Subtitle node
+        \ifx\insertsubtitle\@empty\else
+          \node[anchor=north east, text width=0.8\paperwidth, align=right, font=\small, text=ugmText] 
+          at ($(current page.north east) + (-1em, -1em)$) {\insertsubtitle};
+        \fi
+      
+      % Title node
+      \node[anchor=north east, text width=0.8\paperwidth, align=right, font=\fontsize{28}{34}\selectfont\bfseries, text=ugmBlue] 
+      at ($(current page.north east) + (-1em, -5em)$) {\inserttitle};
+      
+      % Author node
+      \node[anchor=north east, text width=0.6\paperwidth, align=right, font=\large, text=ugmBlue] 
+      at ($(current page.north east) + (-1em, -13em)$) {\textbf{\insertauthor}};
+    \end{tikzpicture}
+    
+    \vfill
+
+    % Sidebar-like element on the title page
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[fill=white, anchor=north west, xshift=0.05\paperwidth, minimum height=0.6\paperheight, minimum width=0.22\paperwidth, inner sep=1cm, draw=gray!50, line width=0.5pt] 
+        (infobox) at (current page.north west) {};
+
+        \node[anchor=center, text width=0.2\paperwidth, align=center] at (infobox.center) {
+            \includegraphics[width=0.17\paperwidth]{ugm_logo.png}\\
+            \vspace{1em}
+        };
+        
+        % Blue bar below the sidebar
+        \node[fill=ugmBlue, anchor=north west, xshift=0.05\paperwidth, yshift=-0.6\paperheight, minimum height=0.02\paperheight, minimum width=0.22\paperwidth, inner sep=0pt, draw=ugmBlue, line width=0.5pt] 
+        at (current page.north west) {};
+    \end{tikzpicture}
+    
+    % Custom footline specifically for the title page
+    \begin{tikzpicture}[remember picture, overlay]
+      % Left box with website
+      \node[fill=ugmBlue, anchor=south west, minimum height=3.7ex, minimum width=0.23\paperwidth, text=white, font=\footnotesize, align=center, text width=0.25\paperwidth] 
+      at (current page.south west) {\href{https://www.ugm.ac.id}{\color{white}www.ugm.ac.id}};
+      
+      % Center box with slogan
+      \node[fill=white, anchor=south, minimum height=3.7ex, minimum width=0.5\paperwidth, text=ugmBlue, font=\footnotesize, align=center] 
+      at (current page.south) {Locally Rooted, Globally Respected};
+      
+      % Right box with logo and text
+      \node[fill=white, anchor=south east, minimum height=3.7ex, minimum width=0.25\paperwidth, inner sep=-0.1cm] at (current page.south east) {
+          \includegraphics[height=3ex]{ugm_logo_plain.png}%
+      };
+    \end{tikzpicture}
+  }
+}
+
+% ----- THEME MODE -----
+\mode<presentation>
+{
+  \setbeamertemplate{navigation symbols}{}
+  % This tells all frames to use our new "UGM theme" frametitle definition
+  \setbeamertemplate{frametitle}[UGM theme] 
+}
+
+\mode
+<all>

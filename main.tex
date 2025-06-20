@@ -1,0 +1,832 @@
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+
+% ----- THEME AND PACKAGES -----
+\usetheme{UGM} 
+\usepackage[utf8]{inputenc}
+\usefonttheme{professionalfonts}
+\usepackage[sfdefault]{atkinson}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Essential packages for enhanced features
+\usepackage{amsmath}
+\usepackage{booktabs}        % For better tables
+\usepackage{multicol}        % For multi-column layouts
+\usepackage{tcolorbox}       % For colored boxes
+\usepackage{listings}        % For code listings
+\usepackage{pgfplots}        % For plots and graphs
+\usepackage{algorithm2e}     % For algorithms
+\usepackage{fontawesome5}    % For icons
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning}
+\usepackage{media9}          % For embedded videos
+\usepackage[table]{xcolor}
+
+% Set up code listing style
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{ugmBlue},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+% Define colors for highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% ----- PRESENTATION METADATA -----
+\title{UGM Beamer \\Template Guidelines}
+\subtitle{\textbf{UGM Beamer Theme} $|$ Template Documentation}
+\author{Harun $|$ {\href{https://github.com/runsdev}{github.com/runsdev}}}
+\date{\today}
+\logo{ugm_logo.png}
+
+\begin{document}
+
+% ----- TITLE FRAME -----
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+% ----- TABLE OF CONTENTS -----
+\begin{frame}
+    \frametitle{Contents}
+    
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
+\end{frame}
+
+% ----- SECTION: BASIC SLIDES -----
+\section{Basic Slide Elements}
+
+\begin{frame}
+    \frametitle{Basic Text Formatting}
+    
+    \begin{itemize}
+        \item Normal text with \textbf{bold}, \textit{italic}, and \textcolor{ugmBlue}{colored text}
+        \item Bullet points with standard indentation
+        \item \alert{Highlighted text} for emphasis
+    \end{itemize}
+    
+    \begin{enumerate}
+        \item Numbered lists are created with \texttt{enumerate}
+        \item Second item in the list
+        \item Third item with \textbf{formatting}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic Text Formatting}
+    
+    \begin{block}{Standard Block}
+        This is a standard block environment for highlighting content.
+    \end{block}
+    
+    \begin{alertblock}{Alert Block}
+        This block is used for warnings or important notes.
+    \end{alertblock}
+    
+    \begin{exampleblock}{Example Block}
+        This block is used for examples.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic Math Formatting}
+    
+    Inline math: $E = mc^2$ is Einstein's famous equation.
+    
+    Display math:
+    \[
+    \nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
+    \]
+    
+    Equation with numbering:
+    \begin{equation}
+        \nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t}
+    \end{equation}
+    
+    Align environment for multiple equations:
+    \begin{align}
+        E &= mc^2 \\
+        m &= \frac{E}{c^2}
+    \end{align}
+\end{frame}
+
+% ----- SECTION: LAYOUTS -----
+\section{Multi-Column Layouts}
+
+\begin{frame}
+    \frametitle{Two-Column Layout with Beamer Columns}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Left Column}
+            \begin{itemize}
+                \item First bullet point
+                \item Second bullet point
+                \item Third bullet point with longer text that may wrap to the next line
+            \end{itemize}
+            
+            Some regular text in the left column.
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \textbf{Right Column}
+            
+            \includegraphics[width=\textwidth]{example-image-a}
+            \centerline{\small Image Caption}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Three-Column Layout}
+    
+    \begin{columns}[T]
+        \begin{column}{0.3\textwidth}
+            \textbf{Column 1}
+            \begin{itemize}
+                \item Item 1
+                \item Item 2
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.3\textwidth}
+            \textbf{Column 2}
+            \begin{itemize}
+                \item Item A
+                \item Item B
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.3\textwidth}
+            \textbf{Column 3}
+            \begin{itemize}
+                \item Item X
+                \item Item Y
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Uneven Column Layout}
+    
+    \begin{columns}[T]
+        \begin{column}{0.65\textwidth}
+            \textbf{Wider Column}
+            
+            This column contains more content and takes up 65\% of the slide width.
+            
+            \begin{itemize}
+                \item The width can be adjusted as needed
+                \item The layout is flexible
+                \item Content will flow within the specified width
+            \end{itemize}
+        \end{column}
+        
+        \begin{column}{0.3\textwidth}
+            \textbf{Narrower Column}
+            
+            This column is only 30\% wide.
+            
+            \includegraphics[width=\textwidth]{example-image-b}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ----- SECTION: TABLES -----
+\section{Tables}
+
+\begin{frame}
+    \frametitle{Basic Table}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{|l|c|r|}
+            \hline
+            \textbf{Left} & \textbf{Center} & \textbf{Right} \\
+            \hline
+            Data 1 & 123 & 45.67 \\
+            Data 2 & 456 & 89.01 \\
+            Data 3 & 789 & 23.45 \\
+            \hline
+        \end{tabular}
+        \caption{Basic table with borders}
+    \end{table}
+    
+    \vspace{1em}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Table Usage Tip]
+        Use the \texttt{|} character to create vertical lines and \texttt{\textbackslash hline} for horizontal lines.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Professional Table with Booktabs}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{lrr}
+            \toprule
+            \textbf{Method} & \textbf{Accuracy (\%)} & \textbf{Time (s)} \\
+            \midrule
+            Method A & 95.2 & 1.23 \\
+            Method B & 97.8 & 2.56 \\
+            Method C & 98.1 & 4.78 \\
+            \bottomrule
+        \end{tabular}
+        \caption{Professional table with booktabs package}
+    \end{table}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Booktabs Tip]
+        Use \texttt{\textbackslash toprule}, \texttt{\textbackslash midrule}, and \texttt{\textbackslash bottomrule} for professional tables.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Colored Table}
+    
+    \begin{table}
+        \centering
+        \rowcolors{2}{ugmLightGrey}{white}
+        \begin{tabular}{lcr}
+            \rowcolor{ugmBlue!40}
+            \textcolor{white}{\textbf{Category}} & \textcolor{white}{\textbf{Value}} & \textcolor{white}{\textbf{Percentage}} \\
+            Category A & 45.2 & 22\% \\
+            Category B & 32.1 & 16\% \\
+            Category C & 78.9 & 39\% \\
+            Category D & 47.3 & 23\% \\
+        \end{tabular}
+        \caption{Table with alternating row colors}
+    \end{table}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Color Tip]
+        Use \texttt{\textbackslash rowcolors\{2\}\{color1\}\{color2\}} to alternate row colors starting from row 2.
+    \end{tcolorbox}
+\end{frame}
+
+% ----- SECTION: IMAGES AND FIGURES -----
+\section{Images and Figures}
+
+\begin{frame}
+    \frametitle{Basic Image Inclusion}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \includegraphics[width=\textwidth]{example-image-a}
+            \centerline{\small Full-width image with caption}
+            
+            \vspace{1em}
+            
+            % \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Image Tip]
+            %     Use \texttt{width=\textbackslash textwidth} to make the image fill the column width.
+            % \end{tcolorbox}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{figure}
+                \includegraphics[width=0.8\textwidth]{example-image-b}
+                \caption{Image using figure environment}
+            \end{figure}
+            
+            % \begin{itemize}
+            %     \item Use \texttt{figure} environment for formal figures
+            %     \item Use \texttt{centerline} for simple captions
+            %     \item Control size with \texttt{width} parameter
+            % \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic Image Inclusion}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}   
+            \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Image Tip]
+                Use \texttt{width=\textbackslash textwidth} to make the image fill the column width.
+            \end{tcolorbox}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Use \texttt{figure} environment for formal figures
+                \item Use \texttt{centerline} for simple captions
+                \item Control size with \texttt{width} parameter
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Image Grid Layout}
+    
+    \begin{center}
+        \begin{tabular}{cc}
+            \includegraphics[width=0.1\textwidth]{example-image-a} &
+            \includegraphics[width=0.1\textwidth]{example-image-b} \\
+            \small Image A & \small Image B \\[1em]
+            \includegraphics[width=0.1\textwidth]{example-image-c} &
+            \includegraphics[width=0.1\textwidth]{example-image} \\
+            \small Image C & \small Image D \\
+        \end{tabular}
+    \end{center}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Grid Tip]
+        Use a \texttt{tabular} environment to create a grid of images with captions.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Including Videos}
+    
+    \begin{center}
+        \includemedia[
+            width=0.8\textwidth,
+            height=0.6\textwidth,
+            activate=pageopen,
+            flashvars={
+                modestbranding=1 % Hide YouTube logo
+            }
+        ]{}{example-movie.mp4}
+    \end{center}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Video Tip]
+        \begin{itemize}
+            \item Use the \texttt{media9} package for embedded videos
+            \item Videos will play in PDF viewers that support multimedia (e.g., Adobe Reader)
+            \item Parameters can control autoplay, controls, etc.
+        \end{itemize}
+    \end{tcolorbox}
+\end{frame}
+
+% ----- SECTION: DIAGRAMS AND CHARTS -----
+\section{Diagrams and Charts}
+
+\begin{frame}
+    \frametitle{TikZ Diagrams}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}[scale=0.7, transform shape]
+                % Nodes
+                \node[draw, fill=ugmLightGrey, circle, minimum size=1cm] (A) at (0,0) {A};
+                \node[draw, fill=ugmLightGrey, circle, minimum size=1cm] (B) at (3,1) {B};
+                \node[draw, fill=ugmLightGrey, circle, minimum size=1cm] (C) at (3,-1) {C};
+                \node[draw, fill=ugmLightGrey, circle, minimum size=1cm] (D) at (6,0) {D};
+                
+                % Arrows
+                \draw[->, thick] (A) -- (B);
+                \draw[->, thick] (A) -- (C);
+                \draw[->, thick] (B) -- (D);
+                \draw[->, thick] (C) -- (D);
+            \end{tikzpicture}
+            \centerline{\small Simple network diagram}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}[scale=0.7, transform shape]
+                % Flowchart
+                \node[draw, fill=ugmLightGrey, rectangle, rounded corners, minimum width=2cm] (start) at (0,0) {Start};
+                \node[draw, fill=ugmLightGrey, rectangle, rounded corners, minimum width=2cm] (process) at (0,-2) {Process};
+                \node[draw, fill=ugmLightGrey, diamond, aspect=2, minimum width=2cm] (decision) at (0,-4) {Decision};
+                \node[draw, fill=ugmLightGrey, rectangle, rounded corners, minimum width=2cm] (end) at (0,-6) {End};
+                
+                % Arrows
+                \draw[->, thick] (start) -- (process);
+                \draw[->, thick] (process) -- (decision);
+                \draw[->, thick] (decision) -- node[right] {Yes} (end);
+                \draw[->, thick] (decision) -- ++(2,0) |- (process);
+                \node at (2,-3) {No};
+            \end{tikzpicture}
+            \centerline{\small Simple flowchart}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Graphs with PGFPlots}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=5cm,
+                    xlabel={x},
+                    ylabel={y},
+                    title={Simple Line Plot},
+                    legend pos=north west
+                ]
+                    \addplot[color=ugmBlue,mark=*] coordinates {
+                        (0,0) (1,1) (2,4) (3,9) (4,16)
+                    };
+                    \addplot[color=red,mark=square] coordinates {
+                        (0,0) (1,2) (2,4) (3,6) (4,8)
+                    };
+                    \legend{$x^2$, $2x$}
+                \end{axis}
+            \end{tikzpicture}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=5cm,
+                    xlabel={Category},
+                    ylabel={Value},
+                    title={Bar Chart},
+                    ybar,
+                    symbolic x coords={A, B, C, D},
+                    xtick=data
+                ]
+                    \addplot[fill=ugmBlue] coordinates {
+                        (A, 10) (B, 7) (C, 12) (D, 5)
+                    };
+                \end{axis}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+    
+    Use the \texttt{pgfplots} package for creating professional charts and graphs.
+\end{frame}
+
+\begin{frame}
+    \frametitle{More Chart Examples}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=5cm,
+                    xlabel={x},
+                    ylabel={Probability},
+                    title={Normal Distribution},
+                    domain=-3:3,
+                    samples=100
+                ]
+                    \addplot[color=ugmBlue,thick] {exp(-x^2/2)/sqrt(2*pi)};
+                \end{axis}
+            \end{tikzpicture}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    width=\textwidth,
+                    height=5cm,
+                    title={Pie Chart},
+                    view={0}{90},
+                    colormap={whiteblue}{color(0cm)=(ugmBlue); color(1cm)=(ugmLightGrey)},
+                    colorbar,
+                    colorbar style={title=Value}
+                ]
+                    \addplot3[
+                        surf,
+                        shader=interp,
+                        domain=0:1,
+                        domain y=0:360
+                    ] 
+                    ({y*cos(x)}, {y*sin(x)}, {y^2});
+                \end{axis}
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ----- SECTION: CODE LISTINGS -----
+\section{Code Listings}
+
+\begin{frame}[fragile]
+    \frametitle{Basic Code Listing}
+    
+    \begin{lstlisting}[language=C++, caption=Hello World Example]
+#include <iostream>
+
+int main() {
+    // This is a comment
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Listing Tip]
+        \begin{itemize}
+            \item Specify the language for syntax highlighting
+            \item Use the \texttt{listings} and \texttt{[fragile]} for frames with listings
+        \end{itemize}
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Code Listing with Line Numbers and Highlighting}
+    
+    \begin{lstlisting}[language=Python, 
+                      caption=Python Example, 
+                      numbers=left,
+                      numberstyle=\tiny\color{codegray},
+                      keywordstyle=\color{ugmBlue},
+                      commentstyle=\color{codegreen},
+                      stringstyle=\color{codepurple},
+                      basicstyle=\ttfamily\footnotesize,
+                      breaklines=true]
+def calculate_factorial(n):
+    """
+    Calculate the factorial of a number using recursion.
+    """
+    if n <= 1:
+        return 1  # Base case
+    else:
+        return n * calculate_factorial(n-1)  # Recursive case
+
+# Test the function
+for i in range(5):
+    print(f"Factorial of {i} is {calculate_factorial(i)}")
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Inline Code and Algorithms}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            Inline code: \lstinline|int x = 42;|
+            
+            \begin{lstlisting}[language=SQL, caption=SQL Query]
+SELECT 
+    students.name,
+    AVG(grades.score) as avg_score
+FROM students
+JOIN grades ON students.id = grades.student_id
+GROUP BY students.id
+HAVING avg_score > 80
+ORDER BY avg_score DESC;
+            \end{lstlisting}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{algorithm}[H]
+                \SetAlgoLined
+                \KwIn{Array $A$ of size $n$}
+                \KwOut{Sorted array $A$}
+                \For{$i \gets 1$ \KwTo $n-1$}{
+                    $key \gets A[i]$\;
+                    $j \gets i-1$\;
+                    \While{$j \geq 0$ and $A[j] > key$}{
+                        $A[j+1] \gets A[j]$\;
+                        $j \gets j-1$\;
+                    }
+                    $A[j+1] \gets key$\;
+                }
+                \caption{Insertion Sort}
+            \end{algorithm}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ----- SECTION: CUSTOM BOXES -----
+\section{Custom Boxes and Decorations}
+
+\begin{frame}
+    \frametitle{TColor Boxes}
+    
+    \begin{tcolorbox}[
+        colback=ugmLightGrey,
+        colframe=ugmBlue,
+        title=Standard Box,
+        fonttitle=\bfseries
+    ]
+        This is a standard colored box with a title.
+        
+        \begin{itemize}
+            \item You can include lists
+            \item And other content inside
+        \end{itemize}
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[
+        colback=red!5,
+        colframe=red!80!black,
+        title=Warning Box,
+        fonttitle=\bfseries
+    ]
+        This box uses different colors to indicate warnings or critical information.
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ugmLightGrey,
+        colframe=ugmBlue,
+        title=Box with Shadow,
+        fonttitle=\bfseries,
+        drop shadow
+    ]
+        This box has a drop shadow effect.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Custom TColor Boxes}
+    
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ugmLightGrey,
+        colframe=ugmBlue,
+        title=Note Box,
+        fonttitle=\bfseries,
+        overlay unbroken and first={
+            \node[anchor=west, inner sep=0pt] 
+            at ([xshift=10pt]frame.north west) 
+            {\faInfoCircle\ };
+        }
+    ]
+        Important note with an icon in the title.
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[
+        enhanced,
+        colback=yellow!10,
+        colframe=yellow!50!black,
+        title=Tip Box,
+        fonttitle=\bfseries,
+        overlay unbroken and first={
+            \node[anchor=west, inner sep=0pt] 
+            at ([xshift=10pt]frame.north west) 
+            {\faLightbulb\ };
+        }
+    ]
+        Useful tip with a light bulb icon in the title.
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ugmLightGrey,
+        colframe=ugmBlue,
+        title=Question Box,
+        fonttitle=\bfseries,
+        overlay unbroken and first={
+            \node[anchor=west, inner sep=0pt] 
+            at ([xshift=10pt]frame.north west) 
+            {\faQuestion\ };
+        }
+    ]
+        Question or quiz with a question icon in the title.
+    \end{tcolorbox}
+\end{frame}
+
+% ----- SECTION: REFERENCES AND BIBLIOGRAPHY -----
+\section{References and Bibliography}
+
+\begin{frame}
+    \frametitle{Manual Bibliography}
+    
+    \begin{thebibliography}{9}
+        \bibitem{ref1} 
+        Author, A. (2023). 
+        \textit{Title of the paper}. 
+        Journal Name, 10(2), 123-145.
+        
+        \bibitem{ref2} 
+        Author, B., \& Author, C. (2022). 
+        \textit{Title of the book}.
+        Publisher Name.
+    \end{thebibliography}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bibliography Tips}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Bibliography Options]
+        \begin{itemize}
+            \item \textbf{Manual bibliography:} Use \texttt{thebibliography} environment
+            \item \textbf{BibTeX:} Use \texttt{bibliographystyle} and \texttt{bibliography} commands
+            \item \textbf{BibLaTeX:} More modern approach with \texttt{printbibliography}
+        \end{itemize}
+    \end{tcolorbox}
+    
+    \begin{tcolorbox}[colback=yellow!10,colframe=yellow!50!black,title=\faLightbulb\ Tip]
+        For a BibTeX-based approach:
+        
+        \begin{lstlisting}[language=TeX, basicstyle=\ttfamily\footnotesize]
+\bibliographystyle{plain}
+\bibliography{references}
+        \end{lstlisting}
+        
+        Where \texttt{references.bib} is your BibTeX database file.
+    \end{tcolorbox}
+\end{frame}
+
+% ----- SECTION: ANIMATION AND OVERLAY -----
+\section{Animation and Overlay Specifications}
+
+\begin{frame}
+    \frametitle{Basic Overlay Specifications}
+    
+    \begin{itemize}
+        \item<1-> This item appears on slide 1 and stays
+        \item<2-> This item appears on slide 2 and stays
+        \item<3-> This item appears on slide 3 and stays
+        \item<4-> This item appears on slide 4 and stays
+    \end{itemize}
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Overlay Specifications]
+        \begin{itemize}
+            \item \texttt{<1->}: Appears on slide 1 and stays visible
+            \item \texttt{<2>}: Appears only on slide 2
+            \item \texttt{<1-3>}: Appears on slides 1 through 3
+            \item \texttt{<2,4>}: Appears on slides 2 and 4
+        \end{itemize}
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Advanced Overlay Examples}
+    
+    \onslide<1->
+    First, we introduce the basic concept.
+    
+    \onslide<2->
+    Then, we add more details to our explanation.
+    
+    \begin{center}
+        \includegraphics<1>[width=0.4\textwidth]{example-image-a}
+        \includegraphics<2>[width=0.4\textwidth]{example-image-b}
+        \includegraphics<3>[width=0.4\textwidth]{example-image-c}
+    \end{center}
+    
+    \onslide<3->
+    Finally, we reach our conclusion with all the evidence.
+    
+    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Advanced Techniques]
+        \begin{itemize}
+            \item Use \texttt{\textbackslash onslide<2->} for paragraphs
+            \item Apply overlay specs to any command: \texttt{\textbackslash includegraphics<2>}
+            \item Use \texttt{\textbackslash only<2>{content}} to completely hide content
+            \item Use \texttt{\textbackslash alt<2>{option 1}{option 2}} for alternatives
+        \end{itemize}
+    \end{tcolorbox}
+\end{frame}
+
+% ----- CONCLUSION -----
+\section{Conclusion}
+
+\begin{frame}
+    \frametitle{Additional Resources}
+    
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=LaTeX Resources]
+                \begin{itemize}
+                    \item Overleaf Documentation
+                    \item LaTeX Wikibook
+                    \item TeX Stack Exchange
+                    \item Beamer User Guide
+                    \item PGFPlots Manual
+                    \item TikZ Documentation
+                \end{itemize}
+            \end{tcolorbox}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=UGM Theme Contacts]
+                \begin{itemize}
+                    \item For theme issues or suggestions, contact:
+                    \item Email: support@ugm.ac.id
+                    \item Repository: github.com/ugm/beamer-theme
+                    \item Last updated: \today
+                \end{itemize}
+            \end{tcolorbox}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+        \Huge Thank You!
+        
+        \vspace{1em}
+        
+        \Large Any Questions?
+    \end{center}
+\end{frame}
+
+\end{document}
