@@ -4,6 +4,10 @@ A professional LaTeX Beamer presentation template inspired by Universitas Gadjah
 
 ## 📸 Preview
 
+![alt text](image.png)
+
+![alt text](image-1.png)
+
 The template includes:
 - Clean title page with UGM logo and branding
 - Professional slide layouts with consistent styling
