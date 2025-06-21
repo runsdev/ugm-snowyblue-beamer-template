@@ -2,10 +2,9 @@
 
 % ----- THEME AND PACKAGES -----
 \usetheme{UGM} 
-\usepackage[utf8]{inputenc}
 \usefonttheme{professionalfonts}
-\usepackage[sfdefault]{atkinson}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage[type1, sfdefault]{atkinson}
+\usepackage[T1]{fontenc}
 
 % Essential packages for enhanced features
 \usepackage{amsmath}
@@ -723,67 +722,16 @@ ORDER BY avg_score DESC;
         \end{itemize}
     \end{tcolorbox}
     
-    \begin{tcolorbox}[colback=yellow!10,colframe=yellow!50!black,title=\faLightbulb\ Tip]
-        For a BibTeX-based approach:
+%     \begin{tcolorbox}[colback=yellow!10,colframe=yellow!50!black,title=\faLightbulb\ Tip]
+%         For a BibTeX-based approach:
         
-        \begin{lstlisting}[language=TeX, basicstyle=\ttfamily\footnotesize]
-\bibliographystyle{plain}
-\bibliography{references}
-        \end{lstlisting}
-        
-        Where \texttt{references.bib} is your BibTeX database file.
-    \end{tcolorbox}
-\end{frame}
+%         \begin{verbatim}
+% \bibliographystyle{plain}
+% \bibliography{references}
+%         \end{verbatim}
 
-% ----- SECTION: ANIMATION AND OVERLAY -----
-\section{Animation and Overlay Specifications}
-
-\begin{frame}
-    \frametitle{Basic Overlay Specifications}
-    
-    \begin{itemize}
-        \item<1-> This item appears on slide 1 and stays
-        \item<2-> This item appears on slide 2 and stays
-        \item<3-> This item appears on slide 3 and stays
-        \item<4-> This item appears on slide 4 and stays
-    \end{itemize}
-    
-    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Overlay Specifications]
-        \begin{itemize}
-            \item \texttt{<1->}: Appears on slide 1 and stays visible
-            \item \texttt{<2>}: Appears only on slide 2
-            \item \texttt{<1-3>}: Appears on slides 1 through 3
-            \item \texttt{<2,4>}: Appears on slides 2 and 4
-        \end{itemize}
-    \end{tcolorbox}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Advanced Overlay Examples}
-    
-    \onslide<1->
-    First, we introduce the basic concept.
-    
-    \onslide<2->
-    Then, we add more details to our explanation.
-    
-    \begin{center}
-        \includegraphics<1>[width=0.4\textwidth]{example-image-a}
-        \includegraphics<2>[width=0.4\textwidth]{example-image-b}
-        \includegraphics<3>[width=0.4\textwidth]{example-image-c}
-    \end{center}
-    
-    \onslide<3->
-    Finally, we reach our conclusion with all the evidence.
-    
-    \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Advanced Techniques]
-        \begin{itemize}
-            \item Use \texttt{\textbackslash onslide<2->} for paragraphs
-            \item Apply overlay specs to any command: \texttt{\textbackslash includegraphics<2>}
-            \item Use \texttt{\textbackslash only<2>{content}} to completely hide content
-            \item Use \texttt{\textbackslash alt<2>{option 1}{option 2}} for alternatives
-        \end{itemize}
-    \end{tcolorbox}
+%         Where \texttt{references.bib} is your BibTeX database file.
+%     \end{tcolorbox}
 \end{frame}
 
 % ----- CONCLUSION -----
@@ -807,26 +755,15 @@ ORDER BY avg_score DESC;
         \end{column}
         
         \begin{column}{0.48\textwidth}
-            \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=UGM Theme Contacts]
+            \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Contacts and Collaboration]
                 \begin{itemize}
-                    \item For theme issues or suggestions, contact:
-                    \item Email: support@ugm.ac.id
-                    \item Repository: github.com/ugm/beamer-theme
+                    \item Email: harunsixsixfour@gmail.com
+                    \item Repository: \href{https://github.com/runsdev/ugm-snowyblue-beamer-template}{ugm-snowyblue-beamer-template}
                     \item Last updated: \today
                 \end{itemize}
             \end{tcolorbox}
         \end{column}
     \end{columns}
-\end{frame}
-
-\begin{frame}[plain]
-    \begin{center}
-        \Huge Thank You!
-        
-        \vspace{1em}
-        
-        \Large Any Questions?
-    \end{center}
 \end{frame}
 
 \end{document}

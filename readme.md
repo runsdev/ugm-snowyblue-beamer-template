@@ -25,12 +25,11 @@ The template includes:
 
 ### Compilation
 
-**XeLaTeX:**
 ```bash
-xelatex main.tex
+latexmk
 ```
 
-**Note:** XeLaTeX is the preferred compiler for this template as it provides better font handling and Unicode support for the Atkinson font family.
+Read `.latexmkrc` for more details.
 
 ## 📁 File Structure
 
@@ -71,7 +70,6 @@ ugm-snowyblue-beamer-template/
 - ✅ Algorithms
 - ✅ Custom colored boxes with icons
 - ✅ Bibliography and references
-- ✅ Animation and overlay effects
 
 ## 🛠️ Customization
 
