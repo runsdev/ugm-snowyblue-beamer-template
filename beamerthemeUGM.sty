@@ -15,6 +15,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{xcolor}
+\usepackage{ragged2e} % ADDED FOR JUSTIFICATION
 
 % ----- COLORS -----
 \definecolor{ugmBlue}{HTML}{074363}
@@ -47,6 +48,10 @@
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{frametitle}{size=\large, series=\bfseries} % Made frametitle bold
 \setbeamerfont{institute}{size=\normalsize}
+
+% ----- TEXT ALIGNMENT -----
+% Make all normal text justified by default
+\AtBeginDocument{\justifying}
 
 % ----- OUTER THEME (HEADER/FOOTER/SIDEBAR) -----
 
@@ -112,6 +117,17 @@
     ] at ($(current page.north west) + (2.3em, -2.7ex)$) {
       \insertframetitle
     };
+
+    % background ugm emblem
+    \node[
+      anchor=east,
+      xshift=0.25\paperwidth,
+      % yshift=0.5\paperheight,
+      inner sep=0pt,
+      opacity=0.1
+    ] at (current page.east) {
+      \includegraphics[scale=0.5]{ugm_logo_black.png}
+    };
   \end{tikzpicture}
   \vskip2.5ex % Space for the content to start below the frame title
 }
@@ -143,7 +159,7 @@
       
       % Author node
       \node[anchor=north east, text width=0.6\paperwidth, align=right, font=\large, text=ugmBlue] 
-      at ($(current page.north east) + (-1em, -13em)$) {\textbf{\insertauthor}};
+      at ($(current page.north east) + (-1em, -13em)$) {\insertauthor};
     \end{tikzpicture}
     
     \vfill
