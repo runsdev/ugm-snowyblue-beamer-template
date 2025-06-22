@@ -4,9 +4,9 @@ A professional LaTeX Beamer presentation template inspired by Universitas Gadjah
 
 ## 📸 Preview
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
-![alt text](image-1.png)
+![alt text](assets/image-1.png)
 
 The template includes:
 - Clean title page with UGM logo and branding
@@ -20,7 +20,7 @@ The template includes:
 1. **Download or clone** this repository
 2. **Ensure you have** a LaTeX distribution installed (TeX Live, MiKTeX, etc.)
 3. **Open** `main.tex` in your preferred LaTeX editor
-4. **Compile** the document using XeLaTeX (recommended) or pdfLaTeX
+4. **Compile** the document using `latexmk main.tex` (refer the section below)
 5. **Customize** the content for your presentation
 
 ### Compilation
@@ -36,12 +36,10 @@ Read `.latexmkrc` for more details.
 ```
 ugm-snowyblue-beamer-template/
 ├── main.tex                    # Main presentation file with examples
-├── beamerthemeUGM.sty         # UGM theme definition
-├── ugm_logo.png               # Full UGM logo for title page
-├── ugm_logo_plain.png         # Plain UGM logo for footer
-├── mountain_bg.jpg            # Background image (if needed)
+├── beamerthemeUGM.sty          # UGM theme definition
+├── assets/                     # Theme assets
 ├── template-guidelines.pdf     # Design guidelines reference
-└── readme.md                  # This file
+└── readme.md                   # This file
 ```
 
 ## 🎨 Features
@@ -193,25 +191,13 @@ def hello_world():
 \end{tcolorbox}
 ```
 
-## 🎬 Animation and Overlays
-
-Create dynamic presentations with overlay specifications:
-
-```latex
-\begin{itemize}
-    \item<1-> Appears on slide 1 and stays
-    \item<2-> Appears on slide 2 and stays
-    \item<3> Appears only on slide 3
-\end{itemize}
-```
-
 ## 🔧 Troubleshooting
 
 ### Common Issues
 
 **Compilation Errors:**
 - Ensure all required packages are installed
-- Use `pdflatex` or `xelatex` for compilation
+- Use `latexmk` and ensure `.latexmkrc` correctly setup
 - Check for missing image files
 
 **Font Issues:**
@@ -255,6 +241,4 @@ For issues related to:
 
 ---
 
-**Created by:** Harun | [github.com/runsdev](https://github.com/runsdev)  
-**Last Updated:** June 20, 2025  
-**Template Version:** 1.0
+**Created by:** Harun | [github.com/runsdev](https://github.com/runsdev) 
