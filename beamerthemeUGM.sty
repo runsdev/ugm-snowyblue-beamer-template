@@ -107,11 +107,6 @@
     \end{tikzpicture}
 } % Footline is empty by default, frames will handle it
 
-% --- HEADER (COURSE TITLE) ---
-% Headline is no longer needed as frametitle replaces it
-\defbeamertemplate*{headline}{UGM theme}
-{}
-
 % ----- INNER THEME (TITLE PAGE, ITEMS, BLOCKS) -----
 
 % --- ITEMIZE BULLETS ---
@@ -217,7 +212,7 @@
     \node[
       fill=ugmLightGrey,
       anchor=north west,
-      minimum width=0.08\paperwidth,
+      minimum width=0.08\paperheight,
       minimum height=2.5ex,
       inner sep=0pt,
       yshift=-0.07\paperheight

@@ -26,7 +26,7 @@ The template includes:
 ### Compilation
 
 ```bash
-latexmk
+latexmk main.tex
 ```
 
 Read `.latexmkrc` for more details.

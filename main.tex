@@ -364,30 +364,33 @@
     \end{tcolorbox}
 \end{frame}
 
-% \begin{frame}
-%     \frametitle{Including Videos}
-%     \begin{center}
-%         \includemedia[
-%             width=0.8\textwidth,
-%             height=0.6\textwidth,
-%             activate=pageopen,
-%             flashvars={
-%                 modestbranding=1
-%             }
-%         ]{}{assets/SampleVideo_1280x720_1mb.mp4}
-%     \end{center}
-% \end{frame}
+\begin{frame}
+    \frametitle{Including Videos (only in supported PDF viewers)}
+
+    \begin{center}
+        \includemedia[
+            width=0.8\textwidth,
+            height=0.4\textwidth,
+            activate=pageopen,
+            % flashvars={
+            %     modestbranding=1
+            % }
+        ]{}{assets/SampleVideo_1280x720_1mb.mp4}
+    \end{center}
+
+\end{frame}
 
 \begin{frame}
-    \frametitle{Including Videos}
+    \frametitle{Including Videos (only in supported PDF viewers)}
 
     \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Video Tip]
         \begin{itemize}
             \item Use the \texttt{media9} package for embedded videos
-            \item Videos will play in PDF viewers that support multimedia (e.g., Adobe Reader)
+            \item Videos will play in PDF viewers that support multimedia (e.g., Adobe Reader, Foxit Reader)
             \item Parameters can control autoplay, controls, etc.
         \end{itemize}
     \end{tcolorbox}
+
 \end{frame}
     
 
