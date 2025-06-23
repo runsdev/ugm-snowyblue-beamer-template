@@ -6,20 +6,6 @@
 \usepackage[type1, sfdefault]{atkinson}
 \usepackage[T1]{fontenc}
 
-% Essential packages for enhanced features
-\usepackage{amsmath}
-\usepackage{booktabs}        % For better tables
-\usepackage{multicol}        % For multi-column layouts
-\usepackage{tcolorbox}       % For colored boxes
-\usepackage{listings}        % For code listings
-\usepackage{pgfplots}        % For plots and graphs
-\usepackage{algorithm2e}     % For algorithms
-\usepackage{fontawesome5}    % For icons
-\usepackage{tikz}
-\usetikzlibrary{mindmap,trees,arrows,shapes,positioning}
-\usepackage{media9}          % For embedded videos
-\usepackage[table]{xcolor}
-
 % Set up code listing style
 \lstdefinestyle{mystyle}{
   backgroundcolor=\color{backcolour},   
@@ -75,6 +61,7 @@
 \begin{frame}
     \frametitle{Basic Text Formatting}
     
+    % URGENT: ADD SPACE AFTER FRAMETITLE
     \begin{itemize}
         \item Normal text with \textbf{bold}, \textit{italic}, and \textcolor{ugmBlue}{colored text}
         \item Bullet points with standard indentation
@@ -103,6 +90,31 @@
         This block is used for examples.
     \end{exampleblock}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Basic Text Formatting}
+    
+    \begin{theorem}[Pythagorean Theorem]
+        In a right triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.
+        \begin{equation}
+            c^2 = a^2 + b^2
+        \end{equation}
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Basic Text Formatting}
+    
+    \begin{proof}
+        To prove the Pythagorean theorem, we can use a geometric approach or algebraic manipulation. 
+        Consider a right triangle with legs \(a\) and \(b\), and hypotenuse \(c\). By constructing squares on each side and comparing areas, we arrive at the equation:
+        \[
+        c^2 = a^2 + b^2
+        \]
+        This completes the proof.
+    \end{proof}
+\end{frame}
+
 
 \begin{frame}
     \frametitle{Basic Math Formatting}
@@ -352,20 +364,23 @@
     \end{tcolorbox}
 \end{frame}
 
+% \begin{frame}
+%     \frametitle{Including Videos}
+%     \begin{center}
+%         \includemedia[
+%             width=0.8\textwidth,
+%             height=0.6\textwidth,
+%             activate=pageopen,
+%             flashvars={
+%                 modestbranding=1
+%             }
+%         ]{}{assets/SampleVideo_1280x720_1mb.mp4}
+%     \end{center}
+% \end{frame}
+
 \begin{frame}
     \frametitle{Including Videos}
-    
-    \begin{center}
-        \includemedia[
-            width=0.8\textwidth,
-            height=0.6\textwidth,
-            activate=pageopen,
-            flashvars={
-                modestbranding=1 % Hide YouTube logo
-            }
-        ]{}{example-movie.mp4}
-    \end{center}
-    
+
     \begin{tcolorbox}[colback=ugmLightGrey,colframe=ugmBlue,title=Video Tip]
         \begin{itemize}
             \item Use the \texttt{media9} package for embedded videos
@@ -374,6 +389,7 @@
         \end{itemize}
     \end{tcolorbox}
 \end{frame}
+    
 
 % ----- SECTION: DIAGRAMS AND CHARTS -----
 \section{Diagrams and Charts}
@@ -653,8 +669,8 @@ ORDER BY avg_score DESC;
         fonttitle=\bfseries,
         overlay unbroken and first={
             \node[anchor=west, inner sep=0pt] 
-            at ([xshift=10pt]frame.north west) 
-            {\faInfoCircle\ };
+            at ([xshift=4pt, yshift=-8pt]frame.north west) 
+            {\color{white}\faInfoCircle\ };
         }
     ]
         Important note with an icon in the title.
@@ -668,8 +684,8 @@ ORDER BY avg_score DESC;
         fonttitle=\bfseries,
         overlay unbroken and first={
             \node[anchor=west, inner sep=0pt] 
-            at ([xshift=10pt]frame.north west) 
-            {\faLightbulb\ };
+            at ([xshift=4pt, yshift=-8pt]frame.north west) 
+            {\color{white}\faLightbulb\ };
         }
     ]
         Useful tip with a light bulb icon in the title.
@@ -683,8 +699,8 @@ ORDER BY avg_score DESC;
         fonttitle=\bfseries,
         overlay unbroken and first={
             \node[anchor=west, inner sep=0pt] 
-            at ([xshift=10pt]frame.north west) 
-            {\faQuestion\ };
+            at ([xshift=4pt, yshift=-8pt]frame.north west) 
+            {\color{white}\faQuestion\ };
         }
     ]
         Question or quiz with a question icon in the title.

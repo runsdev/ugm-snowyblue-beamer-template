@@ -17,6 +17,21 @@
 \usepackage{xcolor}
 \usepackage{ragged2e} % ADDED FOR JUSTIFICATION
 
+% Essential packages that the theme depends on
+\usepackage{amsmath}         % For mathematical content
+\usepackage{booktabs}        % For professional tables
+\usepackage{multicol}        % For multi-column layouts
+\usepackage{tcolorbox}       % For colored boxes
+\tcbuselibrary{skins,shadows} % Add tcolorbox libraries for enhanced features
+\usepackage{listings}        % For code listings
+\usepackage{pgfplots}        % For plots and graphs
+\pgfplotsset{compat=1.18}    % Set pgfplots compatibility
+\usepackage{algorithm2e}     % For algorithms
+\usepackage{fontawesome5}    % For icons
+\usetikzlibrary{mindmap,trees,arrows,shapes,positioning}
+\usepackage{media9}          % For embedded videos
+\usepackage[table]{xcolor}   % For table coloring support
+
 % ----- COLORS -----
 \definecolor{ugmBlue}{HTML}{074363}
 \definecolor{ugmText}{HTML}{333333}
@@ -53,6 +68,24 @@
 % Make all normal text justified by default
 \AtBeginDocument{\justifying}
 
+% Justify text in all environments
+\setbeamertemplate{itemize/enumerate body begin}{\justifying}
+\setbeamertemplate{itemize/enumerate subbody begin}{\justifying}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\justifying}
+
+% Justify text in block environments
+\addtobeamertemplate{block begin}{}{\justifying}
+\addtobeamertemplate{block alerted begin}{}{\justifying}
+\addtobeamertemplate{block example begin}{}{\justifying}
+
+% Justify text in theorem environments
+\addtobeamertemplate{theorem begin}{}{\justifying}
+\addtobeamertemplate{proof begin}{}{\justifying}
+
+% Justify captions and other text elements
+\setbeamertemplate{caption}{\raggedright\insertcaption}
+\renewcommand{\raggedright}{\justifying} % Override raggedright to use justifying
+
 % ----- OUTER THEME (HEADER/FOOTER/SIDEBAR) -----
 
 % --- FOOTER ---
@@ -80,6 +113,100 @@
 {}
 
 % ----- INNER THEME (TITLE PAGE, ITEMS, BLOCKS) -----
+
+% --- ITEMIZE BULLETS ---
+% Set itemize bullets to circles for all levels
+\setbeamertemplate{itemize item}{\textbullet}
+\setbeamertemplate{itemize subitem}{\textbullet}
+\setbeamertemplate{itemize subsubitem}{\textbullet}
+
+% Set colors for itemize bullets
+\setbeamercolor{itemize item}{fg=ugmBlue}
+\setbeamercolor{itemize subitem}{fg=ugmBlue}
+\setbeamercolor{itemize subsubitem}{fg=ugmBlue}
+
+% --- BLOCK ENVIRONMENTS ---
+% Standard block
+\setbeamercolor{block title}{bg=ugmBlue, fg=white}
+\setbeamercolor{block body}{bg=ugmLightGrey, fg=ugmText}
+\setbeamerfont{block title}{series=\bfseries}
+
+% Alert block
+\setbeamercolor{block title alerted}{bg=red!80!black, fg=white}
+\setbeamercolor{block body alerted}{bg=red!10, fg=ugmText}
+\setbeamerfont{block title alerted}{series=\bfseries}
+
+% Example block
+\setbeamercolor{block title example}{bg=green!70!black, fg=white}
+\setbeamercolor{block body example}{bg=green!10, fg=ugmText}
+\setbeamerfont{block title example}{series=\bfseries}
+
+% Simplified block templates with rounded corners
+\setbeamertemplate{block begin}{%
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=.75ex]{block title}%
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title}%
+  {}%
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body}%
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block end}{%
+  \end{beamercolorbox}\vskip\smallskipamount%
+}
+
+% Alert block template
+\setbeamertemplate{block alerted begin}{%
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=.75ex]{block title alerted}%
+    \usebeamerfont*{block title alerted}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title alerted}%
+  {}%
+  {\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body alerted}%
+    \ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block alerted end}{%
+  \end{beamercolorbox}\vskip\smallskipamount%
+}
+
+% Example block template
+\setbeamertemplate{block example begin}{%
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=.75ex]{block title example}%
+    \usebeamerfont*{block title example}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title example}%
+  {}%
+  {\ifbeamercolorempty[bg]{block body example}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body example}%
+  \begin{beamercolorbox}[colsep*=.75ex,vmode]{block body example}%
+    \ifbeamercolorempty[bg]{block body example}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{block example end}{%
+  \end{beamercolorbox}\vskip\smallskipamount%
+}
+
+% --- THEOREM ENVIRONMENTS ---
+% Colors for theorem-like environments
+\setbeamercolor{theorem}{fg=ugmText}
+\setbeamercolor{theorem title}{fg=ugmBlue}
+\setbeamerfont{theorem title}{series=\bfseries}
+
+\setbeamercolor{proof}{fg=ugmText}
+\setbeamercolor{proof title}{fg=ugmBlue}
+\setbeamerfont{proof title}{series=\bfseries}
 
 % <<< MODIFIED SECTION FOR NEW FRAMETITLE STYLE >>>
 % This template creates the new look for all regular (non-titlepage) slides
