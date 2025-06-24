@@ -254,7 +254,83 @@
   \vskip2.5ex % Space for the content to start below the frame title
 }
 
-% <<< END MODIFIED SECTION >>>
+% <<< NEW SECTION FOR CENTERED LOGO SLIDE TYPE >>>
+% Define a new frametitle template for centered logo slides
+\defbeamertemplate{frametitle}{UGM centered logo}
+{
+  \nointerlineskip
+  % Gray background for entire slide
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[color=titleBg] (current page.north west) rectangle (current page.south east);
+  \end{tikzpicture}
+
+  % Mountain background image
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south, inner sep=0pt] at (current page.south) {
+      \includegraphics[width=\paperwidth]{assets/snowy-mountains.jpg}
+    };
+  \end{tikzpicture}
+  
+  \begin{tikzpicture}[remember picture, overlay]
+    % Frame title with centered logo
+    \node[
+      fill=ugmBlue,
+      anchor=north,
+      minimum width=0.25\textwidth,
+      minimum height=9em,
+      align=center,
+    ] at ($(current page.north)$) {};
+
+    \node[
+      anchor=north,
+      inner sep=0pt,
+    ] at ($(current page.north) + (-0.05em, -1em)$) {
+      \includegraphics[width=0.2\textwidth]{assets/ugm_logo_white.png}
+    };
+
+    \node[
+      anchor=north,
+      text width=0.95\paperwidth,
+      align=center,
+      font=\huge,
+      text=ugmText
+    ] at ($(current page.north) + (0, -11em)$) {
+      \insertframetitle
+    };
+  \end{tikzpicture}
+}
+
+% Define a new footline template for centered logo slides that shows the footer
+\defbeamertemplate{footline}{UGM centered logo}
+{
+  \begin{tikzpicture}[remember picture, overlay]
+    % Left box with website
+    \node[fill=ugmBlue, anchor=south west, minimum height=6ex, minimum width=0.25\paperwidth, text=white, font=\footnotesize, align=center, text width=0.23\paperwidth] 
+    at (current page.south west) {\href{https://www.ugm.ac.id}{\color{white}www.ugm.ac.id}};
+    
+    % Center box with slogan
+    \node[fill=white, anchor=south, minimum height=6ex, minimum width=0.5\paperwidth, text=ugmBlue, font=\footnotesize, align=center] 
+    at (current page.south) {Locally Rooted, Globally Respected};
+    
+    % Right box with logo and text
+    \node[fill=white, anchor=south east, minimum height=6ex, minimum width=0.25\paperwidth, inner sep=-0.6cm] at (current page.south east) {
+        \includegraphics[height=6ex]{assets/ugm_logo_plain.png}%
+    };
+  \end{tikzpicture}
+}
+
+% Command to switch to centered logo slide style
+\newcommand{\ugmcenteredlogoslide}{%
+  \setbeamertemplate{frametitle}[UGM centered logo]%
+  \setbeamertemplate{footline}[UGM centered logo]%
+}
+
+% Command to return to normal slide style
+\newcommand{\ugmnormalslide}{%
+  \setbeamertemplate{frametitle}[UGM theme]%
+  \setbeamertemplate{footline}[UGM theme]%
+}
+% <<< END NEW SECTION >>>
 
 % --- TITLE PAGE ---
 \defbeamertemplate*{title page}{UGM theme}
